@@ -1,14 +1,19 @@
-function showTime()
-{
-    const date = new Date();
-    return date.getHours() + "Hrs:-" + date.getMinutes()+"Mins:"+date.getSeconds+" Secs";
-
+// employees.js
+var faker = require('faker')
+function generateEmployees () {
+  var employees = []
+  for (var id = 0; id < 50; id++)
+   {
+    var firstName = faker.name.firstName()
+    var lastName = faker.name.lastName()
+    var email = faker.internet.email()
+    employees.push({
+      "id": id,
+      "first_name": firstName,
+      "last_name": lastName,
+      "email": email
+    })
+  }
+  return { "employees": employees }
 }
-
-function ShowSessionExpire()
-{
-    console.log(" Activity-B: Your Session expired at "+showTime());
-}
-console.log(" Activity-A: Trigerring Activity-B  at "+showTime());
-setTimeout(ShowSessionExpire,5000);
-console.log(" Activity-A: Trigerring Activity-B  at "+showTime()+" will execute after 5 second");
+module.exports = generateEmployees
